@@ -8,7 +8,9 @@ services:
             - ./server:/var/www
 
     web:
-        image: nginx
+        build:
+            context: .
+            dockerfile: ./docker/nginx/Dockerfile
         container_name: nginx
         volumes:
             - ./server:/var/www
