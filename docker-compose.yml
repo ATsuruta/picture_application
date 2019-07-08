@@ -6,8 +6,6 @@ services:
         build: ./docker/php
         volumes:
             - ./laravel:/var/www/src
-        env_file:
-            ./docker/php/env/php.env
         depends_on:
             - mysql
 
@@ -17,6 +15,7 @@ services:
         volumes:
             - ./laravel:/var/www/src
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./docker/logs/nginx:/etc/nginx/logs
         ports:
             - 80:80
         depends_on:
