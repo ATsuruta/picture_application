@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+    php:
+        container_name: php
+        build: ./docker/php
+        volumes:
+            - ./laravel:/var/www/src
+        depends_on:
+            - mysql
+
+    nginx:
+        build: ./docker/nginx
+        container_name: nginx
+        volumes:
+            - ./laravel:/var/www/src
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./docker/logs/nginx:/etc/nginx/logs
+        ports:
+            - 80:80
+        depends_on:
+            - php
+
+    mysql:
+        image: mysql:5.7
+        container_name: mysql
+        volumes:
+            - ./docker/mysql/data:/var/lib/mysql
+            - ./docker/mysql/mysql_conf:/etc/mysql/conf.d
+        env_file:
+            ./docker/mysql/env/mysql.env
+        ports:
+            - "3314:3306"
+
+    redis:
+        restart: always
+        image: redis:5.0
+        volumes:
+            - ./docker/redis:/data
+        ports:
+            - "6379:6379"
+        command: redis-server --appendonly yes

@@ -1,3 +1,15 @@
 # picture_application
-webアプリチュートリアルに沿って作成
-- subアカウントにちゃんと反映されるか確認
+Laravelを利用した写真アプリを作る
+
+# usage
+### composer install & migrate実行
+```
+$ docker-compose exec php sh
+$ composer install
+```
+
+# 環境
+- phpfpm
+- nginx
+- mysql
+- redis
