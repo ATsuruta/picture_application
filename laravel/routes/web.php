@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/test', function() {
-    $results = DB::table('users')->get();
-    return $results;
-});
-Route::get('/redis', function() {
-    Cache::put('name', 'aaa', 100);
-    return Cache::get('name');
-});
+Route::get('/{any?}', function() {
+    return view('index');
+})->where('any', '.+');
+
+// Route::get('/test', function() {
+//     $results = DB::table('users')->get();
+//     return $results;
+// });
+// Route::get('/redis', function() {
+//     Cache::put('name', 'aaa', 100);
+//     return Cache::get('name');
+// });
