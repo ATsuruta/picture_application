@@ -4,9 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import './bootstrap'
 import Vue from 'vue'
 // ルーティングの定義をインポートする
 import router from './router'
+import store from './store'
 // ルートコンポーネントをインポートする
 import App from './App.vue'
 
@@ -29,9 +31,10 @@ import App from './App.vue'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+new Vue({
     el: '#app',
     router, // ルーティングの定義を読み込む
+    store,
     components: { App }, // ルートコンポーネントの使用を宣言する
     template: '<App />' // ルートコンポーネントを描画する
 });
