@@ -8,6 +8,9 @@ services:
             - ./laravel:/var/www/src
         depends_on:
             - mysql
+        ports:
+            - "3000:3000"
+            - "3001:3001"
 
     nginx:
         build: ./docker/nginx

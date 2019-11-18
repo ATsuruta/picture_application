@@ -4,7 +4,7 @@ COPY php.ini /usr/local/etc/php/
 
 RUN apk update && apk add --no-cache \
     freetype-dev libjpeg-turbo-dev libpng-dev libmcrypt-dev \
-    git vim unzip tzdata \
+    git vim unzip tzdata nodejs-npm \
     libltdl \
     && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && apk del tzdata libltdl libmcrypt-dev \
